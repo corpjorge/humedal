@@ -7,60 +7,68 @@ use Illuminate\Http\Request;
 
 class WeatherContoller extends Controller
 {
-    public $url = 'https://weather-ydn-yql.media.yahoo.com/forecastrss';
+    public $url;
+    public $app_id;
+    public $consumer_key;
+    public $consumer_secret;
 
-    function weatherIndex()
+    function __construct()
     {
+        $this->url = config('weather.url');
+        $this->app_id = config('weather.app_id');
+        $this->consumer_key = config('weather.consumer_key');
+        $this->consumer_secret = config('weather.consumer_secret');
+    }
 
-        /*
-        $app_id = 'CUdvw2Ar';
-        $consumer_key = 'dj0yJmk9aHoyZGVLOUlUWk9wJmQ9WVdrOVExVmtkbmN5UVhJbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTJk';
-        $consumer_secret = 'e65de4bac2b4b3be0ecbc4958d640fb153175a77';
-
+    function weatherIndex($location = 'bogota')
+    {         
         $query = array(
-                'location' => 'sunnyvale,ca',
-                'format' => 'json',
+            'location' => $location,
+            'format' => 'json',
+            'u' => 'c'
         );
 
-        $oauth = array(
-                'oauth_consumer_key' => $consumer_key,
-                'oauth_nonce' => uniqid(mt_rand(1, 1000)),
-                'oauth_signature_method' => 'HMAC-SHA1',
-                'oauth_timestamp' => time(),
-                'oauth_version' => '1.0'
-        );
-
+        $oauth =  $this->oauth();  
+ 
         $base_info = $this->buildBaseString($this->url, 'GET', array_merge($query, $oauth));
-        $composite_key = rawurlencode($consumer_secret) . '&';
+        $composite_key = rawurlencode($this->consumer_secret) . '&';
         $oauth_signature = base64_encode(hash_hmac('sha1', $base_info, $composite_key, true));
         $oauth['oauth_signature'] = $oauth_signature;
+        
+        return json_decode($this->requestCurl($oauth, $query), true);
+  
+    }
 
+    function oauth(): array 
+    {
+        return [
+            'oauth_consumer_key' => $this->consumer_key,
+            'oauth_nonce' => uniqid(mt_rand(1, 1000)),
+            'oauth_signature_method' => 'HMAC-SHA1',
+            'oauth_timestamp' => time(),
+            'oauth_version' => '1.0'
+        ];
+
+    }
+
+    function requestCurl($oauth, $query)
+    {
         $header = array(
-            $this->buildAuthorizationHeader($oauth),
-                'X-Yahoo-App-Id: ' . $app_id
-            );
+            $this->buildAuthorizationHeader($oauth, $query),
+            'X-Yahoo-App-Id: ' . $this->app_id
+        );
+
         $options = array(
-                CURLOPT_HTTPHEADER => $header,
-                CURLOPT_HEADER => false,
-                CURLOPT_URL => $this->url . '?' . http_build_query($query),
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_SSL_VERIFYPEER => false
-            );
+            CURLOPT_HTTPHEADER => $header,
+            CURLOPT_HEADER => false,
+            CURLOPT_URL => $this->url . '?' . http_build_query($query),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false
+        );
 
         $ch = curl_init();
         curl_setopt_array($ch, $options);
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        return $response;
-        */
-
-        $value = config('app.timezone');
-
-        
-
-
-        dd($value);
+        return curl_exec($ch);         
     }
 
 
