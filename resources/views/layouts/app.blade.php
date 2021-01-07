@@ -62,6 +62,7 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('/js/material-kit.min.js?v=2.1.0') }}" type="text/javascript"></script>
   <script src="{{ asset('/js/application.js') }}"></script>
+  <script src="{{ asset('/js/app.js') }}"></script>
 
   <script>
     $(document).ready(function () {
@@ -111,10 +112,8 @@
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
-
-
-    const ps = new PerfectScrollbar('.scrollbar');
+    }) 
+ 
 
 
   </script>
