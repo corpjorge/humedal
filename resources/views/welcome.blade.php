@@ -40,7 +40,7 @@
                     <clima-component location="orlando" iframe-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112222.13492454053!2d-81.43887829488561!3d28.481301846214564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e773d8fecdbc77%3A0xac3b2063ca5bf9e!2sOrlando%2C%20Florida%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sco!4v1610050888183!5m2!1ses-419!2sco"></clima-component>
                     <clima-component location="newyork" iframe-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946234!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNueva%20York%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sco!4v1610050926929!5m2!1ses-419!2sco"></clima-component>
 
-                    <a href="" class="btn btn-rose btn-raised btn-round">
+                    <a href="{{ route('historial')}}" class="btn btn-rose btn-raised btn-round">
                         Historial
                     </a>
                 </div>  

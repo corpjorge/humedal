@@ -18,7 +18,8 @@ class CreateRecordTable extends Migration
             $table->string('city');
             $table->string('Humedad');
             $table->string('Viento');
-            $table->string('Condición');
+            $table->string('alta');
+            $table->string('baja');          
             $table->string('pubDate');
             $table->timestamps();
         });
