@@ -16,8 +16,8 @@ class CreateRecordTable extends Migration
         Schema::create('record', function (Blueprint $table) {
             $table->id();
             $table->string('city');
-            $table->string('Humedad');
-            $table->string('Viento');
+            $table->string('humedad');
+            $table->string('viento');
             $table->string('alta');
             $table->string('baja');          
             $table->string('pubDate');

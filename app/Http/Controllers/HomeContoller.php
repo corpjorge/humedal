@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class HomeContoller extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         return view('welcome');
     }
