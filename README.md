@@ -1,5 +1,5 @@
-# Humedal
-La humedad de las ciudades Miami, Orlando y New York
+# Weather
+El clima de las ciudades Miami, Orlando y New York
 
 ## Instalación 
 ```
