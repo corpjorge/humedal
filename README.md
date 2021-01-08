@@ -1,4 +1,4 @@
-# humedal
+# Humedal
 La humedad de las ciudades Miami, Orlando y New York
 
 ## Instalación 
@@ -6,9 +6,16 @@ La humedad de las ciudades Miami, Orlando y New York
 composer install
 ```
 
-### Iniciar
+### Crear env
 ```
-php artisan migrate -seed
+Windows: copy .env.example .env
+Linux: copy .env.example .env 
+``` 
+
+### Configurar BD y ejecutar
+``` 
+php artisan migrate --seed
+php artisan key:generate
 php artisan run serve
 ``` 
  
