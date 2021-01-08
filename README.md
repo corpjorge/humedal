@@ -1,6 +1,16 @@
 # Weather
 El clima de las ciudades Miami, Orlando y New York [Demo](http://weather.corpjorge.com/).
 
+## Tecnología usada 
+
+1. PHP 8
+2. Laravel 8
+3. VueJs
+4. Bootstrap - Material
+5. Template (SASS) Creative-Tim Material
+6. CI: Larvel Forge
+7. Cloud: AWS
+
 ## Instalación
 ```
 composer install
