@@ -1,7 +1,7 @@
 # Weather
 El clima de las ciudades Miami, Orlando y New York
 
-## Instalación 
+## Instalación
 ```
 composer install
 ```
@@ -9,16 +9,16 @@ composer install
 ### Crear env
 ```
 Windows: copy .env.example .env
-Linux: copy .env.example .env 
-``` 
+Linux: cp .env.example .env
+```
 
-### Configurar BD y ejecutar
-``` 
+### Configurar en el archivo .env la base de datos y ejecutar:
+```
 php artisan migrate --seed
 php artisan key:generate
-php artisan run serve
-``` 
- 
+php artisan serve
+```
+
 ### Mas
 ver [Referencia](https://laravel.com/docs/8.x/installation#installation-via-composer).
 
